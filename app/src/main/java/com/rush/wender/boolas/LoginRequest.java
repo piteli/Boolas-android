@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class LoginRequest extends StringRequest{
 
-    private static final String LOGIN_REQUEST_URL = "http://192.168.0.105/blast/Login.php";
+    private static final String LOGIN_REQUEST_URL = "http://boolas.000webhostapp.com/Login.php";
     private Map<String, String> params;
 
 

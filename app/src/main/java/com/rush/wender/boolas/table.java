@@ -469,7 +469,7 @@ public class table extends AppCompatActivity {
         progressDialog = ProgressDialog.show(table.this,"Loading...",
                 "Loading table view, please wait...", false, false);
 
-        String DATA_URL = String.format("http://192.168.0.105/blast/getICress.php?value=%1$s", data);
+        String DATA_URL = String.format("http://boolas.000webhostapp.com/getICress.php?value=%1$s", data);
 
 
         StringRequest stringRequest23 = new StringRequest(Request.Method.GET, DATA_URL, new Response.Listener<String>() {

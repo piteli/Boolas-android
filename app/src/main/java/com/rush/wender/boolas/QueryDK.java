@@ -6,7 +6,7 @@ package com.rush.wender.boolas;
 
 public class QueryDK {
 
-    public static final String DATA_URL = "http://192.168.0.105/blast/QueryDK.php";
+    public static final String DATA_URL = "http://boolas.000webhostapp.com/QueryDK.php";
     public static final String FSK_NAME = "fsk_name";
     public static final String FSK_CODE = "fsk_code";
     public static final String JSON_ARRAY = "fsk_result";
