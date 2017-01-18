@@ -551,7 +551,7 @@ public class table extends AppCompatActivity {
         );
 
         stringRequest23.setRetryPolicy(new DefaultRetryPolicy(
-                30000,
+                120000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(this);
