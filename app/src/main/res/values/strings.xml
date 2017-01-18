@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Boolas</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
+    <string name="age">Age</string>
+    <string name="click_here_to_register">Click here to Register!</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="title_activity_medabot_name">MedabotName</string>
+
+    <string-array name="position">
+        <item></item>
+        <item>Lecturer</item>
+        <item>Student</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="faculty">
+        <item>Health Science</item>
+        <item>Pharmacy</item>
+        <item>Business Management</item>
+        <item>Foundation Studies</item>
+        <item>Architecture, Planning and Surveying</item>
+        <item>Hotel and Tourism Management</item>
+        <item>Art and Design</item>
+        <item>Accountancy</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
