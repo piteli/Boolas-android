@@ -215,7 +215,7 @@ public class RegisterActivity extends AppCompatActivity  implements Spinner.OnIt
 
     public void getData2(String id) {
 
-          String DATA_URL = String.format("http://boolas.000webhostapp.com/QueryDataDepartment.php?data=%1$s",
+          String DATA_URL = String.format("http://192.168.0.105/blast/QueryDataDepartment.php?data=%1$s",
                   id);
 
        // String DATA_URL = "https://api.myjson.com/bins/ml837";

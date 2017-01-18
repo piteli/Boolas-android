@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class submitTable extends StringRequest {
 
-    private static final String SUBMIT_REQUEST_URL = "http://boolas.000webhostapp.com/submit.php";
+    private static final String SUBMIT_REQUEST_URL = "http://192.168.0.105/blast/submit.php";
     private Map<String, String> params;
 
 
