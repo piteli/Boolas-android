@@ -1,5 +1,5 @@
 # Boolas_v0.1
-simple application's booking class/hall in UiTM Kampus Puncak alam
+simple android application that scrap timetable data of nursing class/hall's UiTM Puncak Alam
 
 ## What is boolas?
 
