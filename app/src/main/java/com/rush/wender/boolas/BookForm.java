@@ -5,49 +5,79 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class BookForm extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private ImageButton fsk7;
-    private ImageButton fsk6;
-    private ImageButton ff2;
-    private ImageButton ff4;
+    private ListView listView;
+    private static final String TAG = "BookForm";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_form);
 
-        fsk7 = (ImageButton) findViewById(R.id.fsk7);
-        fsk6 = (ImageButton) findViewById(R.id.fsk6);
-        ff2 = (ImageButton) findViewById(R.id.ff2);
-        ff4 = (ImageButton) findViewById(R.id.ff4);
 
-        fsk6.setEnabled(false);
-        ff2.setEnabled(false);
-        ff4.setEnabled(false);
-
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar123);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getSupportActionBar().setTitle("Choose Hall");
+        getSupportActionBar().setTitle("Please choose building");
 
-        fsk7.setOnClickListener(new View.OnClickListener() {
+
+        listView = (ListView) findViewById(R.id.listView123);
+        ArrayList<Card> arrayList = new ArrayList<>();
+        arrayList.add(new Card("drawable://" + R.drawable.fsk7 ,"FSK 7"));
+        arrayList.add(new Card("drawable://" + R.drawable.fsk6 ,"FSK 6"));
+        arrayList.add(new Card("drawable://" + R.drawable.ff2 ,"FF 2"));
+        arrayList.add(new Card("drawable://" + R.drawable.ff4 ,"FF 4"));
+
+
+        CustomlistAdapter adapter = new CustomlistAdapter(this, R.layout.card_layout, arrayList);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BookForm.this, dk.class);
-                BookForm.this.startActivity(intent);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent intent;
+
+                switch(i){
+                    case 0:
+                        intent = new Intent(BookForm.this,dk.class);
+                        BookForm.this.startActivity(intent);
+                        break;
+                    case 1:
+                        Log.i("The item clicked was","FSK 6");
+                        Toast.makeText(BookForm.this, "Sorry, FSK 6 is not available for the moment. Please choose different building",
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        Log.i("The item clicked was","FF 2");
+                        Toast.makeText(BookForm.this, "Sorry, FF 2 is not available for the moment. Please choose different building",
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    case 3:
+                        Log.i("The item clicked was","FF 4");
+                        Toast.makeText(BookForm.this, "Sorry, FF 4 is not available for the moment. Please choose different building",
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        break;
+                }
             }
         });
 

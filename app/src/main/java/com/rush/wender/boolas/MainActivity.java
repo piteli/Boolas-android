@@ -26,6 +26,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button inButang = (Button) findViewById(R.id.inButang);
+        inButang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UserAreaActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
+
+        ///////////    set component to each id   /////////////////
+        /*
+
         Toast.makeText(MainActivity.this, "id: 12345",
                              Toast.LENGTH_LONG).show();
 
@@ -37,13 +50,12 @@ public class MainActivity extends AppCompatActivity {
         final Button inButang = (Button) findViewById(R.id.inButang);
         final TextView inReg = (TextView) findViewById(R.id.inReg);
 
-        inNo.addTextChangedListener(new TextValidator(inNo) {
-            @Override public void validate(TextView textView, String text) {
-       /* Validation code here */
-            }
-        });
+        */
 
 
+        ////////////////////   register redirect ////////////////////////////
+
+        /*
         inReg.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -51,8 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+        */
 
-
+        /////////////////    login-button submit json ////////////////////////
+        /*
 
         inButang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 requestQueue.add(loginRequest);
             }
         });
-
+                    */
 
     }
 
