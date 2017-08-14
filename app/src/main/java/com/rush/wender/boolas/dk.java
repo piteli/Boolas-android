@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -42,9 +43,37 @@ public class dk extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dk);
 
-        getData();
+      //  getData();
+
+        hashMap = new HashMap<String, String>();
+
+        hashMap.put("DK1","DKK1FSK");
+        hashMap.put("DK2","DKK2FSK");
+        hashMap.put("DK3","DKK3FSK");
+        hashMap.put("DK4","DKK4FSK");
+        hashMap.put("DK5","DKK5FSK");
+        hashMap.put("DK6","DKK6FSK");
+        hashMap.put("DK7","DKK7FSK");
+        hashMap.put("DK8","DKK8FSK");
+        hashMap.put("DK9","DKK9FSK");
+        hashMap.put("DK10","DKK10FSK");
+
+        arrayList = new ArrayList<String>();
+        arrayList.add("DK1");
+        arrayList.add("DK2");
+        arrayList.add("DK3");
+        arrayList.add("DK4");
+        arrayList.add("DK5");
+        arrayList.add("DK6");
+        arrayList.add("DK7");
+        arrayList.add("DK8");
+        arrayList.add("DK9");
+        arrayList.add("DK10");
 
         listView = (ListView) findViewById(R.id.listView);
+
+        arrayAdapter = new ArrayAdapter<String>(dk.this, android.R.layout.simple_list_item_1, arrayList);
+        listView.setAdapter(arrayAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -52,13 +81,14 @@ public class dk extends AppCompatActivity {
 
                 String hantar = (String)listView.getItemAtPosition(position);
                 hantar2 = hashMap.get(hantar);
+                Log.e("sat",hantar2);
 
                 intent = new Intent(dk.this,table.class);
                 intent.putExtra("hantar2",hantar2);
                 dk.this.startActivity(intent);
 
-            }
-        });
+        }
+    });
 
       //  listView = (ListView)findViewById(R.id.listView);
 
@@ -66,7 +96,7 @@ public class dk extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getSupportActionBar().setTitle("Choose Dewan Kuliah");
+        getSupportActionBar().setTitle("Choose Hall");
     }
 
     @Override
@@ -78,6 +108,8 @@ public class dk extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /*
 
     public void getData(){
 
@@ -129,4 +161,6 @@ public class dk extends AppCompatActivity {
 
 
     }
+
+    */
 }
