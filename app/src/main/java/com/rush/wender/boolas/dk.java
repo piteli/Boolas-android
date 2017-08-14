@@ -2,6 +2,7 @@ package com.rush.wender.boolas;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -23,8 +25,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class dk extends AppCompatActivity {
 
@@ -32,48 +43,72 @@ public class dk extends AppCompatActivity {
     private ListView listView;
     private JSONArray result;
     private ArrayAdapter<String> arrayAdapter;
+    private ArrayList<String> isarraylist;
     private ArrayList<String> arrayList;
     private HashMap<String, String> hashMap;
     private String hantar;
     private String hantar2;
     private Intent intent;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dk);
 
-      //  getData();
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        DownloadTask task = new DownloadTask();
+        isarraylist = new ArrayList<String>();
+        String result = null;
+        String get;
+        try {
+            result = task.execute("http://icress.uitm.edu.my/jadual/HS/UED102.html").get();
+            get = result.replaceAll("\\s+","");
 
-        hashMap = new HashMap<String, String>();
+            Pattern p = Pattern.compile("<TD>(.*?)</TD>");
+            Matcher m = p.matcher(get);
 
-        hashMap.put("DK1","DKK1FSK");
-        hashMap.put("DK2","DKK2FSK");
-        hashMap.put("DK3","DKK3FSK");
-        hashMap.put("DK4","DKK4FSK");
-        hashMap.put("DK5","DKK5FSK");
-        hashMap.put("DK6","DKK6FSK");
-        hashMap.put("DK7","DKK7FSK");
-        hashMap.put("DK8","DKK8FSK");
-        hashMap.put("DK9","DKK9FSK");
-        hashMap.put("DK10","DKK10FSK");
+            while(m.find()){
+                isarraylist.add(m.group(1));
+                System.out.println(m.group(1));
+            }
+
+            isarraylist.remove(0);
+            isarraylist.remove(1);
+            isarraylist.remove(2);
+            isarraylist.remove(3);
+            isarraylist.remove(4);
+            isarraylist.remove(5);
+            isarraylist.remove(6);
+
+
+        } catch (InterruptedException e) {
+            progressBar.setVisibility(View.INVISIBLE);
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            progressBar.setVisibility(View.INVISIBLE);
+            e.printStackTrace();
+        }
+
+
+        //  getData();
 
         arrayList = new ArrayList<String>();
-        arrayList.add("DK1");
-        arrayList.add("DK2");
-        arrayList.add("DK3");
-        arrayList.add("DK4");
-        arrayList.add("DK5");
-        arrayList.add("DK6");
-        arrayList.add("DK7");
-        arrayList.add("DK8");
-        arrayList.add("DK9");
-        arrayList.add("DK10");
+        hashMap = new HashMap<String, String>();
+
+
+        for(int i = 0; i<=isarraylist.size();i++){
+            if(isarraylist.contains("DKK"+i+"FSK")){
+                arrayList.add("Dewan Kuliah "+i);
+                hashMap.put("Dewan Kuliah "+i, "DKK"+i+"FSK");
+            }
+        }
 
         listView = (ListView) findViewById(R.id.listView);
 
         arrayAdapter = new ArrayAdapter<String>(dk.this, android.R.layout.simple_list_item_1, arrayList);
         listView.setAdapter(arrayAdapter);
+        progressBar.setVisibility(View.INVISIBLE);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -90,13 +125,15 @@ public class dk extends AppCompatActivity {
         }
     });
 
+
+
       //  listView = (ListView)findViewById(R.id.listView);
 
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getSupportActionBar().setTitle("Choose Hall");
+        getSupportActionBar().setTitle("Choose available Hall");
     }
 
     @Override
@@ -107,6 +144,36 @@ public class dk extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public class DownloadTask extends AsyncTask<String, Void, String>{
+        @Override
+        protected String doInBackground(String... urls) {
+
+            String result = "";
+            URL url;
+            HttpURLConnection urlConnection = null;
+
+            try{
+                url = new URL(urls[0]);
+                urlConnection = (HttpURLConnection)url.openConnection();
+                InputStream in = urlConnection.getInputStream();
+                InputStreamReader reader  = new InputStreamReader(in);
+                int data = reader.read();
+
+                while(data != -1){
+                    char current = (char) data;
+                    result += current;
+                    data = reader.read();
+                }
+
+                return result;
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 
     /*

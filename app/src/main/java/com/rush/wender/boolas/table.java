@@ -500,8 +500,8 @@ public class table extends AppCompatActivity {
 
                     JSONObject obj2 = obj1.getJSONObject("dewan");
 
-              //      Toast.makeText(table.this, obj2.toString(),
-              //              Toast.LENGTH_LONG).show();
+                    Toast.makeText(table.this, obj2.toString(),
+                            Toast.LENGTH_LONG).show();
 
                     Iterator keys = obj2.keys();
 
