@@ -1,7 +1,11 @@
 package com.rush.wender.boolas;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,6 +47,7 @@ public class dk extends AppCompatActivity {
     private ListView listView;
     private JSONArray result;
     private ArrayAdapter<String> arrayAdapter;
+    private ArrayList<String> main_isarraylist;
     private ArrayList<String> isarraylist;
     private ArrayList<String> arrayList;
     private HashMap<String, String> hashMap;
@@ -50,6 +55,7 @@ public class dk extends AppCompatActivity {
     private String hantar2;
     private Intent intent;
     private ProgressBar progressBar;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,73 +63,144 @@ public class dk extends AppCompatActivity {
         setContentView(R.layout.activity_dk);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        AlertDialog alertDialog = new AlertDialog.Builder(dk.this).create();
         DownloadTask task = new DownloadTask();
+        main_isarraylist = new ArrayList<String>();
         isarraylist = new ArrayList<String>();
         String result = null;
+        String main_result = null;
+        String main_get;
         String get;
-        try {
-            result = task.execute("http://icress.uitm.edu.my/jadual/HS/UED102.html").get();
-            get = result.replaceAll("\\s+","");
+        arrayList = null;
+        hashMap = null;
+        context = this;
+        CheckWifiConnection wifiConnection = new CheckWifiConnection();
+        CheckDataConnection dataConnection = new CheckDataConnection();
+        Boolean getWifiConnection = wifiConnection.isWifi(context);
+        Boolean getDataConnection = dataConnection.isOline(context);
 
-            Pattern p = Pattern.compile("<TD>(.*?)</TD>");
-            Matcher m = p.matcher(get);
 
-            while(m.find()){
-                isarraylist.add(m.group(1));
-                System.out.println(m.group(1));
+        if(getWifiConnection == true || getDataConnection == true) {
+            try {
+
+                //comment temporary
+                /*
+                main_result = task.execute("http://icress.uitm.edu.my/jadual/hs/hs.html").get();
+                main_get = main_result.replaceAll("\\s+", "");
+
+                Pattern main_p = Pattern.compile("target=\"dua\">(.*?)</a>");
+                Matcher main_m = main_p.matcher(main_get);
+
+                while (main_m.find()) {
+                    main_isarraylist.add(main_m.group(1));
+                    System.out.println(main_m.group(1));
+                }
+
+
+
+                for (int k = 0; k <= main_isarraylist.size();k++){
+
+                    result = task.execute("http://icress.uitm.edu.my/jadual/HS/"+main_isarraylist.get(k)+".html").get();
+                    get = result.replaceAll("\\s+", "");
+
+                    Pattern p = Pattern.compile("<TD>(.*?)</TD>");
+                    Matcher m = p.matcher(get);
+
+                    while (m.find()) {
+                        isarraylist.add(m.group(1));
+                        System.out.println(m.group(1));
+                    }
+
+                }
+
+                */
+                result = task.execute("http://icress.uitm.edu.my/jadual/HS/UED102.html").get();
+                get = result.replaceAll("\\s+", "");
+
+                Pattern p = Pattern.compile("<TD>(.*?)</TD>");
+                Matcher m = p.matcher(get);
+
+                while (m.find()) {
+                    isarraylist.add(m.group(1));
+                    System.out.println(m.group(1));
+                }
+
+
+                arrayList = new ArrayList<String>();
+                hashMap = new HashMap<String, String>();
+
+
+                for (int i = 0; i <= isarraylist.size(); i++) {
+                    if (isarraylist.contains("DKK" + i + "FSK")) {
+                        arrayList.add("Dewan Kuliah " + i);
+                        hashMap.put("Dewan Kuliah " + i, "DKK" + i + "FSK");
+                    }
+                }
+
+
+            } catch (InterruptedException e) {
+                alertDialog.setTitle("Error Downloading");
+                alertDialog.setMessage("Oops, seems like targeted scrapped web has been changed");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+                progressBar.setVisibility(View.INVISIBLE);
+
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                alertDialog.setTitle("Error Downloading");
+                alertDialog.setMessage("Oops, seems like targeted scrapped web has been changed");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+                progressBar.setVisibility(View.INVISIBLE);
+                e.printStackTrace();
             }
 
-            isarraylist.remove(0);
-            isarraylist.remove(1);
-            isarraylist.remove(2);
-            isarraylist.remove(3);
-            isarraylist.remove(4);
-            isarraylist.remove(5);
-            isarraylist.remove(6);
 
+            //  getData();
+            listView = (ListView) findViewById(R.id.listView);
 
-        } catch (InterruptedException e) {
+            arrayAdapter = new ArrayAdapter<String>(dk.this, android.R.layout.simple_list_item_1, arrayList);
+            listView.setAdapter(arrayAdapter);
             progressBar.setVisibility(View.INVISIBLE);
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            progressBar.setVisibility(View.INVISIBLE);
-            e.printStackTrace();
-        }
 
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        //  getData();
+                    String hantar = (String) listView.getItemAtPosition(position);
+                    hantar2 = hashMap.get(hantar);
+                    Log.e("sat", hantar2);
 
-        arrayList = new ArrayList<String>();
-        hashMap = new HashMap<String, String>();
+                    intent = new Intent(dk.this, table.class);
+                    intent.putExtra("hantar2", hantar2);
+                    dk.this.startActivity(intent);
 
-
-        for(int i = 0; i<=isarraylist.size();i++){
-            if(isarraylist.contains("DKK"+i+"FSK")){
-                arrayList.add("Dewan Kuliah "+i);
-                hashMap.put("Dewan Kuliah "+i, "DKK"+i+"FSK");
-            }
-        }
-
-        listView = (ListView) findViewById(R.id.listView);
-
-        arrayAdapter = new ArrayAdapter<String>(dk.this, android.R.layout.simple_list_item_1, arrayList);
-        listView.setAdapter(arrayAdapter);
-        progressBar.setVisibility(View.INVISIBLE);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                String hantar = (String)listView.getItemAtPosition(position);
-                hantar2 = hashMap.get(hantar);
-                Log.e("sat",hantar2);
-
-                intent = new Intent(dk.this,table.class);
-                intent.putExtra("hantar2",hantar2);
-                dk.this.startActivity(intent);
+                }
+            });
 
         }
-    });
+        else {
+            alertDialog.setTitle("Error Network");
+            alertDialog.setMessage("No network connection");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "try again",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            recreate();
+                        }
+                    });
+            alertDialog.show();
+            System.out.println("No network connection");
+        }
 
 
 
@@ -134,6 +211,8 @@ public class dk extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getSupportActionBar().setTitle("Choose available Hall");
+
+
     }
 
     @Override
@@ -175,6 +254,7 @@ public class dk extends AppCompatActivity {
             return null;
         }
     }
+
 
     /*
 

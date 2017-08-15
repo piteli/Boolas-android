@@ -1,6 +1,7 @@
 package com.rush.wender.boolas;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,12 +25,12 @@ public class BookForm extends AppCompatActivity {
     private Toolbar toolbar;
     private ListView listView;
     private static final String TAG = "BookForm";
+    private Context context;;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_form);
-
 
         toolbar = (Toolbar) findViewById(R.id.toolbar123);
         setSupportActionBar(toolbar);
