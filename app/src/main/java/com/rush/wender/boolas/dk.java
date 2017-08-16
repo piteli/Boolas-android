@@ -57,7 +57,7 @@ public class dk extends AppCompatActivity {
     private Intent intent;
     private ProgressBar progressBar;
     private Context context;
-    private String[] args = {"http://icress.uitm.edu.my/jadual/hs/UED102.html","http://icress.uitm.edu.my/jadual/ar/CHM138.html"};
+    private String[] args = {"dummy"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
