@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -56,6 +57,7 @@ public class dk extends AppCompatActivity {
     private Intent intent;
     private ProgressBar progressBar;
     private Context context;
+    private String[] args = {"http://icress.uitm.edu.my/jadual/hs/UED102.html","http://icress.uitm.edu.my/jadual/ar/CHM138.html"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class dk extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         AlertDialog alertDialog = new AlertDialog.Builder(dk.this).create();
         DownloadTask task = new DownloadTask();
+        DownloadTask2 task2 = new DownloadTask2();
         main_isarraylist = new ArrayList<String>();
         isarraylist = new ArrayList<String>();
         String result = null;
@@ -83,24 +86,25 @@ public class dk extends AppCompatActivity {
         if(getWifiConnection == true || getDataConnection == true) {
             try {
 
-                //comment temporary
-                /*
-                main_result = task.execute("http://icress.uitm.edu.my/jadual/hs/hs.html").get();
+                main_result = task2.execute("http://icress.uitm.edu.my/jadual/hs/hs.html").get();
                 main_get = main_result.replaceAll("\\s+", "");
 
                 Pattern main_p = Pattern.compile("target=\"dua\">(.*?)</a>");
                 Matcher main_m = main_p.matcher(main_get);
 
+                int t = 0;
                 while (main_m.find()) {
-                    main_isarraylist.add(main_m.group(1));
-                    System.out.println(main_m.group(1));
+                    args[t] = "http://icress.uitm.edu.my/jadual/HS/"+main_m.group(1)+".html";
+                    System.out.println(args[t]);
+                    t++;
                 }
 
 
 
-                for (int k = 0; k <= main_isarraylist.size();k++){
 
-                    result = task.execute("http://icress.uitm.edu.my/jadual/HS/"+main_isarraylist.get(k)+".html").get();
+
+                if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ) {
+                    result = task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, args).get();
                     get = result.replaceAll("\\s+", "");
 
                     Pattern p = Pattern.compile("<TD>(.*?)</TD>");
@@ -110,19 +114,17 @@ public class dk extends AppCompatActivity {
                         isarraylist.add(m.group(1));
                         System.out.println(m.group(1));
                     }
+                } else {
+                    result = task.execute(args).get();
+                    get = result.replaceAll("\\s+", "");
 
-                }
+                    Pattern p = Pattern.compile("<TD>(.*?)</TD>");
+                    Matcher m = p.matcher(get);
 
-                */
-                result = task.execute("http://icress.uitm.edu.my/jadual/HS/UED102.html").get();
-                get = result.replaceAll("\\s+", "");
-
-                Pattern p = Pattern.compile("<TD>(.*?)</TD>");
-                Matcher m = p.matcher(get);
-
-                while (m.find()) {
-                    isarraylist.add(m.group(1));
-                    System.out.println(m.group(1));
+                    while (m.find()) {
+                        isarraylist.add(m.group(1));
+                        System.out.println(m.group(1));
+                    }
                 }
 
 
@@ -225,6 +227,8 @@ public class dk extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+
     public class DownloadTask extends AsyncTask<String, Void, String>{
         @Override
         protected String doInBackground(String... urls) {
@@ -234,17 +238,52 @@ public class dk extends AppCompatActivity {
             HttpURLConnection urlConnection = null;
 
             try{
-                url = new URL(urls[0]);
-                urlConnection = (HttpURLConnection)url.openConnection();
-                InputStream in = urlConnection.getInputStream();
-                InputStreamReader reader  = new InputStreamReader(in);
-                int data = reader.read();
+                for (int p = 0; p < args.length; p++) {
+                    url = new URL(urls[p]);
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream in = urlConnection.getInputStream();
+                    InputStreamReader reader = new InputStreamReader(in);
+                    int data = reader.read();
 
-                while(data != -1){
-                    char current = (char) data;
-                    result += current;
-                    data = reader.read();
+                    while (data != -1) {
+                        char current = (char) data;
+                        result += current;
+                        data = reader.read();
+                    }
                 }
+
+                return result;
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+    }
+
+
+
+    public class DownloadTask2 extends AsyncTask<String, Void, String>{
+        @Override
+        protected String doInBackground(String... urls) {
+
+            String result = "";
+            URL url;
+            HttpURLConnection urlConnection = null;
+
+            try{
+                    url = new URL(urls[0]);
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream in = urlConnection.getInputStream();
+                    InputStreamReader reader = new InputStreamReader(in);
+                    int data = reader.read();
+
+                    while (data != -1) {
+                        char current = (char) data;
+                        result += current;
+                        data = reader.read();
+                    }
+
 
                 return result;
 
