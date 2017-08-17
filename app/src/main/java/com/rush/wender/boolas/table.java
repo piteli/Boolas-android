@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -51,7 +52,7 @@ public class table extends AppCompatActivity {
     private ArrayList<String> collectDay;
     private ArrayAdapter<String> arrayAdapter;
     private ArrayAdapter<String> arrayAdapter2;
-    private LinkedHashMap<String, String> isnin;
+    private HashMap<String, String> isnin;
     private HashMap<String, String> selasa;
     private HashMap<String, String> rabu;
     private HashMap<String, String> khamis;
@@ -67,6 +68,7 @@ public class table extends AppCompatActivity {
     private EditText desc;
     private ProgressDialog progressDialog;
     private ProgressDialog progressDialog2;
+    private Toolbar toolbar;
 
 
 
@@ -75,10 +77,16 @@ public class table extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table);
 
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        getSupportActionBar().setTitle("Pick your time table");
+
         Intent intent = getIntent();
         String hantar2 = intent.getStringExtra("hantar2");
 
-        isnin = new LinkedHashMap <String, String>();
+        isnin = new HashMap <String, String>();
         selasa = new HashMap<String, String>();
         rabu = new HashMap<String, String>();
         khamis = new HashMap<String, String>();
@@ -405,7 +413,7 @@ public class table extends AppCompatActivity {
             }
         });
 
-        hantar = (Button)findViewById(R.id.hantarTab);
+        hantar = (Button)findViewById(R.id.HantarTab);
 
         hantar.setOnClickListener(new View.OnClickListener() {
             @Override

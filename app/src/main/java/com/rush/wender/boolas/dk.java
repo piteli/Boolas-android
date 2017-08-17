@@ -143,10 +143,10 @@ public class dk extends AppCompatActivity {
             } catch (InterruptedException e) {
                 alertDialog.setTitle("Error Downloading");
                 alertDialog.setMessage("Oops, seems like targeted scrapped web has been changed");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Try again",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
+                                recreate();
                             }
                         });
                 alertDialog.show();
@@ -156,10 +156,10 @@ public class dk extends AppCompatActivity {
             } catch (ExecutionException e) {
                 alertDialog.setTitle("Error Downloading");
                 alertDialog.setMessage("Oops, seems like targeted scrapped web has been changed");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Try again",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
+                                recreate();
                             }
                         });
                 alertDialog.show();
