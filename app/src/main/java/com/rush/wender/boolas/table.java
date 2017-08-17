@@ -810,8 +810,30 @@ public class table extends AppCompatActivity {
         TextView fri_seventeen_one = (TextView) findViewById(R.id.dt107);
         TextView fri_seventeen_two = (TextView) findViewById(R.id.dt108);
         TextView fri_eighteen_one = (TextView) findViewById(R.id.dt109);
-        TextView fri_eighteen_two = (TextView) findViewById(R.id.dt110);
+        TextView fri_eighteen_two  = (TextView) findViewById(R.id.dt110);
 
+// Try to constructing a very simpify code than below but out of an idea
+        /*
+        for (int i = 1; i <= 22; i++) {
+            String wee = "dt"+i;
+            int id  = getResources().getIdentifier(wee, "id", getPackageName());
+
+            for (int y = 0; y < api_day.size(); y++){
+                if (api_day.get(y).toString().replaceAll("\\s+","").toLowerCase() == "monday" &&
+                        isnin.get(wee).replaceAll("\\s+","").split(",")[1].split("\\.")[0] ==
+                                api_start.get(y).replaceAll("\\s+","").split(":")[0]){
+
+
+
+                }
+            }
+
+        }
+
+        */
+
+
+        //Here come the long one
         for (int i = 0; i < api_day.size(); i++) {
 
             if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("monday") &&
@@ -1693,19 +1715,12 @@ public class table extends AppCompatActivity {
             if (id != 0 && i != 22 && i != 44 && i != 66 && i != 88 && i != 110) {
                 TextView textView = (TextView) findViewById(id);
                 String haha = textView.getText().toString();
-                TextView textView2 = (TextView) findViewById(id-1);
-                String haha2 = textView2.getText().toString();
                 if(haha != "     N/A     "){
 
 
                     String day = hashMap.get(wee);
                     collectDay.add(day);
                 }
-
-               // else if(haha == "     N/A     " && haha2 == "     N/A     "){
-               //     String day = hashMap.get(wee);
-                //    collectDay.add(day);
-              //  }
 
             }
 
