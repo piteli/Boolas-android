@@ -814,7 +814,7 @@ public class table extends AppCompatActivity {
 
         for (int i = 0; i < api_day.size(); i++) {
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("onday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("monday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("8:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("10:20")){
 
@@ -832,7 +832,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("onday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("monday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("9:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("11:20")){
 
@@ -851,7 +851,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("onday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("monday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("10:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("12:20")) {
 
@@ -871,7 +871,7 @@ public class table extends AppCompatActivity {
 
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("onday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("monday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("11:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("1:20")) {
 
@@ -890,7 +890,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("onday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("monday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("12:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("2:20")) {
 
@@ -909,7 +909,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("onday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("monday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("1:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("3:20")) {
 
@@ -929,7 +929,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("onday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("monday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("2:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("4:20")) {
 
@@ -947,7 +947,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("onday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("monday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("3:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("5:20")) {
 
@@ -965,7 +965,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("onday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("monday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("4:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("6:20")) {
 
@@ -990,7 +990,7 @@ public class table extends AppCompatActivity {
 
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("uesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("tuesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("8:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("10:20")){
 
@@ -1008,7 +1008,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("uesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("tuesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("9:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("11:20")){
 
@@ -1027,7 +1027,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("uesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("tuesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("10:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("12:20")) {
 
@@ -1047,7 +1047,7 @@ public class table extends AppCompatActivity {
 
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("uesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("tuesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("11:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("1:20")) {
 
@@ -1066,7 +1066,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("uesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("tuesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("12:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("2:20")) {
 
@@ -1085,7 +1085,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("uesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("tuesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("1:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("3:20")) {
 
@@ -1105,7 +1105,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("uesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("tuesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("2:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("4:20")) {
 
@@ -1123,7 +1123,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("uesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("tuesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("3:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("5:20")) {
 
@@ -1141,7 +1141,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("uesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("tuesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("4:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("6:20")) {
 
@@ -1165,7 +1165,7 @@ public class table extends AppCompatActivity {
 
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("ednesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("wednesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("8:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("10:20")){
 
@@ -1183,7 +1183,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("ednesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("wednesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("9:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("11:20")){
 
@@ -1202,7 +1202,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("ednesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("wednesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("10:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("12:20")) {
 
@@ -1222,7 +1222,7 @@ public class table extends AppCompatActivity {
 
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("ednesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("wednesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("11:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("1:20")) {
 
@@ -1241,7 +1241,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("ednesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("wednesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("12:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("2:20")) {
 
@@ -1260,7 +1260,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("ednesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("wednesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("1:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("3:20")) {
 
@@ -1280,7 +1280,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("ednesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("wednesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("2:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("4:20")) {
 
@@ -1298,7 +1298,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("ednesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("wednesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("3:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("5:20")) {
 
@@ -1316,7 +1316,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("ednesday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("wednesday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("4:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("6:20")) {
 
@@ -1339,7 +1339,7 @@ public class table extends AppCompatActivity {
 
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("hursday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("thursday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("8:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("10:20")){
 
@@ -1357,7 +1357,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("hursday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("thursday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("9:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("11:20")){
 
@@ -1376,7 +1376,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("hursday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("thursday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("10:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("12:20")) {
 
@@ -1396,7 +1396,7 @@ public class table extends AppCompatActivity {
 
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("hursday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("thursday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("11:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("1:20")) {
 
@@ -1415,7 +1415,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("hursday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("thursday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("12:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("2:20")) {
 
@@ -1434,7 +1434,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("hursday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("thursday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("1:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("3:20")) {
 
@@ -1454,7 +1454,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("hursday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("thursday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("2:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("4:20")) {
 
@@ -1472,7 +1472,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("hursday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("thursday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("3:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("5:20")) {
 
@@ -1490,7 +1490,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("hursday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("thursday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("4:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("6:20")) {
 
@@ -1513,7 +1513,7 @@ public class table extends AppCompatActivity {
 
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("riday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("friday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("8:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("10:20")){
 
@@ -1531,7 +1531,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("riday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("friday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("9:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("11:20")){
 
@@ -1550,7 +1550,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("riday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("friday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("10:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("12:20")) {
 
@@ -1570,7 +1570,7 @@ public class table extends AppCompatActivity {
 
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("riday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("friday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("11:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("1:20")) {
 
@@ -1589,7 +1589,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("riday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("friday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("12:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("2:20")) {
 
@@ -1608,7 +1608,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("riday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("friday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("1:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("3:20")) {
 
@@ -1628,7 +1628,7 @@ public class table extends AppCompatActivity {
             }
 
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("riday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("friday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("2:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("4:20")) {
 
@@ -1646,7 +1646,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("riday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("friday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("3:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("5:20")) {
 
@@ -1664,7 +1664,7 @@ public class table extends AppCompatActivity {
 
             }
 
-            if(api_day.get(i).toString().replaceAll("\\s+","").contains("riday") &&
+            if(api_day.get(i).toString().replaceAll("\\s+","").toLowerCase().contains("friday") &&
                     api_start.get(i).toString().replaceAll("\\s+","").contains("4:30") &&
                     api_end.get(i).toString().replaceAll("\\s+","").contains("6:20")) {
 
