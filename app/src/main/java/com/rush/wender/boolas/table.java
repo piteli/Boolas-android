@@ -812,7 +812,8 @@ public class table extends AppCompatActivity {
         TextView fri_eighteen_one = (TextView) findViewById(R.id.dt109);
         TextView fri_eighteen_two  = (TextView) findViewById(R.id.dt110);
 
-// Try to constructing a very simpify code than below but out of an idea
+// Try to constructing a very simpify code from long one below but out of an idea
+
         /*
         for (int i = 1; i <= 22; i++) {
             String wee = "dt"+i;
@@ -822,7 +823,6 @@ public class table extends AppCompatActivity {
                 if (api_day.get(y).toString().replaceAll("\\s+","").toLowerCase() == "monday" &&
                         isnin.get(wee).replaceAll("\\s+","").split(",")[1].split("\\.")[0] ==
                                 api_start.get(y).replaceAll("\\s+","").split(":")[0]){
-
 
 
                 }
