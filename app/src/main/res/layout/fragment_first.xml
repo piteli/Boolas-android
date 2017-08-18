@@ -6,22 +6,43 @@
     tools:context="com.rush.wender.boolas.firstFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="No form added"
-        android:gravity="center"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        android:textColor="#DFDFDF" />
 
-    <ImageView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/formicon"
         android:tint="#DFDFDF"
         android:id="@+id/imageView2"
         android:layout_gravity="top|center"
-        android:paddingTop="50dp" />
+        android:paddingTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No form added"
+        android:gravity="center"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:textColor="#DFDFDF"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
 
 </FrameLayout>
