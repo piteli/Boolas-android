@@ -15,8 +15,25 @@ import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import static com.rush.wender.boolas.R.id.listView;
 
 public class UserAreaActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -25,6 +42,7 @@ public class UserAreaActivity extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
     NavigationView navigationView;
     FloatingActionButton floatingActionButton;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,4 +121,5 @@ public class UserAreaActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         actionBarDrawerToggle.syncState();
     }
+
 }
