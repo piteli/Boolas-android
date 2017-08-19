@@ -3,13 +3,16 @@ package com.rush.wender.boolas;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.PopupMenu;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -47,6 +50,7 @@ public class CustomlistAdapterSecond extends ArrayAdapter<CardSecond> {
         TextView desc;
         ImageView image;
         ProgressBar dialog;
+        ImageButton imageButton;
     }
 
     /**
@@ -95,6 +99,7 @@ public class CustomlistAdapterSecond extends ArrayAdapter<CardSecond> {
                 holder.desc = (TextView) convertView.findViewById(R.id.act_desc);
                 holder.image = (ImageView) convertView.findViewById(R.id.cardImage);
                 holder.dialog = (ProgressBar) convertView.findViewById(R.id.progressBar);
+                holder.imageButton = (ImageButton) convertView.findViewById(R.id.imageButton123);
 
                 result = convertView;
 
@@ -115,6 +120,16 @@ public class CustomlistAdapterSecond extends ArrayAdapter<CardSecond> {
             holder.from.setText(from);
             holder.to.setText(to);
             holder.desc.setText(desc);
+
+            holder.imageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    PopupMenu popup = new PopupMenu(getContext(), view);
+                    MenuInflater inflater = popup.getMenuInflater();
+                    inflater.inflate(R.menu.action, popup.getMenu());
+                    popup.show();
+                }
+            });
 
             //create the imageloader object
             ImageLoader imageLoader = ImageLoader.getInstance();
@@ -155,6 +170,8 @@ public class CustomlistAdapterSecond extends ArrayAdapter<CardSecond> {
         }
 
     }
+
+
 
     /**
      * Required for setting up the Universal Image loader Library
